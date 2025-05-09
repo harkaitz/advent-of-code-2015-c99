@@ -1,0 +1,12 @@
+#!/bin/sh -e
+AOC_YEAR=2015
+AOC_DAYS=01
+AOC_VARIANTS=gcc
+AOC_VARIANT=gcc
+AOC_BUILD=aoc_build
+aoc_build() {
+    make CC="gcc" CFLAGS="-O3 -std=c99" clean all
+}
+aoc_run() {
+    "${BUILDDIR:-./.build}/${1}"
+}
