@@ -22,6 +22,10 @@ check:
 	@wds_aoc all
 
 
+$(BUILDDIR)/04$(EXE): 04.c $(LIB_H) $(LIB_C)
+	@mkdir -p $(BUILDDIR)
+	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ $< $(LIB_C) "-l:libcrypto.a"
+
 $(BUILDDIR)/%$(EXE): %.c $(LIB_H) $(LIB_C)
 	@mkdir -p $(BUILDDIR)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ $< $(LIB_C)

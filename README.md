@@ -7,7 +7,6 @@ problems, implemented in C99.
 Full List:
 
 - Day 1: Not Quite Lisp: [01.c](./01.c), [enunciation](https://adventofcode.com/2015/day/1)
-<!---
 - Day 2: I Was Told There Would Be No Math: [02.c](./02.c), [enunciation](https://adventofcode.com/2015/day/2)
 - Day 3: Perfectly Spherical Houses in a Vacuum: [03.c](./03.c), [enunciation](https://adventofcode.com/2015/day/3)
 - Day 4: The Ideal Stocking Stuffer: [04.c](./04.c), [enunciation](https://adventofcode.com/2015/day/4)
@@ -15,6 +14,7 @@ Full List:
 - Day 6: Probably a Fire Hazard: [06.c](./06.c), [enunciation](https://adventofcode.com/2015/day/6)
 - Day 7: Some Assembly Required: [07.c](./07.c), [enunciation](https://adventofcode.com/2015/day/7)
 - Day 8: Matchsticks: [08.c](./08.c), [enunciation](https://adventofcode.com/2015/day/8)
+<!---
 - Day 9: All in a Single Night: [09.c](./09.c), [enunciation](https://adventofcode.com/2015/day/9)
 - Day 10: Elves Look, Elves Say: [10.c](./10.c), [enunciation](https://adventofcode.com/2015/day/10)
 - Day 11: Corporate Policy: [11.c](./11.c), [enunciation](https://adventofcode.com/2015/day/11)
