@@ -14,9 +14,9 @@ Full List:
 - Day 6: Probably a Fire Hazard: [06.c](./06.c), [enunciation](https://adventofcode.com/2015/day/6)
 - Day 7: Some Assembly Required: [07.c](./07.c), [enunciation](https://adventofcode.com/2015/day/7)
 - Day 8: Matchsticks: [08.c](./08.c), [enunciation](https://adventofcode.com/2015/day/8)
-<!---
 - Day 9: All in a Single Night: [09.c](./09.c), [enunciation](https://adventofcode.com/2015/day/9)
 - Day 10: Elves Look, Elves Say: [10.c](./10.c), [enunciation](https://adventofcode.com/2015/day/10)
+<!---
 - Day 11: Corporate Policy: [11.c](./11.c), [enunciation](https://adventofcode.com/2015/day/11)
 - Day 12: JSAbacusFramework.io: [12.c](./12.c), [enunciation](https://adventofcode.com/2015/day/12)
 - Day 13: Knights of the Dinner Table: [13.c](./13.c), [enunciation](https://adventofcode.com/2015/day/13)
