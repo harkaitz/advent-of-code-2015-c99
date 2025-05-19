@@ -26,6 +26,7 @@ main(int _argc, char *_argv[])
 	char         city1[60], city2[60];
 	int          distance;
 	int          best[2] = {INT_MAX,0};
+        int          route[100];
 
 	err = aoc_input(&fp, "2015", 9, 1);
 	if (err/*err*/) { fprintf(stderr, "error: %s\n", err); return 1; }
@@ -38,7 +39,6 @@ main(int _argc, char *_argv[])
 	}
 	fclose(fp);
 
-	int route[usymbol_count()];
 	for (int i=0; i<usymbol_count(); i++)
 		route[i] = i;
 
