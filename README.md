@@ -16,7 +16,6 @@ Full List:
 - Day 8: Matchsticks: [08.c](./08.c), [enunciation](https://adventofcode.com/2015/day/8)
 - Day 9: All in a Single Night: [09.c](./09.c), [enunciation](https://adventofcode.com/2015/day/9)
 - Day 10: Elves Look, Elves Say: [10.c](./10.c), [enunciation](https://adventofcode.com/2015/day/10)
-<!---
 - Day 11: Corporate Policy: [11.c](./11.c), [enunciation](https://adventofcode.com/2015/day/11)
 - Day 12: JSAbacusFramework.io: [12.c](./12.c), [enunciation](https://adventofcode.com/2015/day/12)
 - Day 13: Knights of the Dinner Table: [13.c](./13.c), [enunciation](https://adventofcode.com/2015/day/13)
@@ -24,6 +23,7 @@ Full List:
 - Day 15: Science for Hungry People: [15.c](./15.c), [enunciation](https://adventofcode.com/2015/day/15)
 - Day 16: Aunt Sue: [16.c](./16.c), [enunciation](https://adventofcode.com/2015/day/16)
 - Day 17: No Such Thing as Too Much: [17.c](./17.c), [enunciation](https://adventofcode.com/2015/day/17)
+<!---
 - Day 18: Like a GIF For Your Yard: [18.c](./18.c), [enunciation](https://adventofcode.com/2015/day/18)
 - Day 19: Medicine for Rudolph: [19.c](./19.c), [enunciation](https://adventofcode.com/2015/day/19)
 - Day 20: Infinite Elves and Infinite Houses: [20.c](./20.c), [enunciation](https://adventofcode.com/2015/day/20)
