@@ -29,7 +29,6 @@ int
 main(int _argc, char *_argv[])
 {
 	FILE        *fp;
-	err_t        err;
 	MFCSAM       tape_db;
 	int          result1 = -1, result2 = -1;
 
@@ -39,8 +38,8 @@ main(int _argc, char *_argv[])
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
 	};
 
-	err = aoc_input(&fp, "2015", 16, 1);
-	if (err/*err*/) { fprintf(stderr, "error: %s\n", err); return 1; }
+	fp = aoc_input("2015", 16, 1);
+	if (!fp/*err*/) { return 1; }
 	
 	while ((result1 == -1 || result2 == -1) && MFCSAM_read(&tape_db, fp))
 	{

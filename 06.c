@@ -10,9 +10,9 @@ typedef struct Instruction {
 	aoc_pos_t from,to;
 } Instruction;
 
-static err_t instruction_parse(Instruction *_i, char _s[]);
-static void  instruction_apply_1(const Instruction *_i);
-static void  instruction_apply_2(const Instruction *_i);
+static int  instruction_parse(Instruction *_i, char _s[]);
+static void instruction_apply_1(const Instruction *_i);
+static void instruction_apply_2(const Instruction *_i);
 
 char grid_1[1000][1000] = {0};
 char grid_2[1000][1000] = {0};
@@ -23,16 +23,19 @@ int
 main(int _argc, char *_argv[])
 {
 	FILE        *fp;
-	err_t        err;
 	char         buffer[512];
 	Instruction  instruction;
+	int          e;
 
-	err = aoc_input(&fp, "2015", 6, 1);
-	if (err/*err*/) { fprintf(stderr, "error: %s\n", err); return 1; }
+	fp = aoc_input("2015", 6, 1);
+	if (!fp/*err*/) { return 1; }
 
-	while (fgets(buffer, sizeof(buffer)-1, fp)) {
-		err = instruction_parse(&instruction, buffer);
-		if (err/*err*/) { fprintf(stderr, "error: %s\n", err); return 1; }
+	for (int line=1; fgets(buffer, sizeof(buffer)-1, fp); line++) {
+		e = instruction_parse(&instruction, buffer);
+		if (e<0/*err*/) {
+			fprintf(stderr, "error: Line %i: Invalid format.\n", line);
+			return 1;
+		}
 		instruction_apply_1(&instruction);
 		instruction_apply_2(&instruction);
 	}
@@ -43,7 +46,7 @@ main(int _argc, char *_argv[])
 	return 0;
 }
 
-static err_t
+static int
 instruction_parse(Instruction *_i, char _s[])
 {
 	if (sscanf(
@@ -52,7 +55,7 @@ instruction_parse(Instruction *_i, char _s[])
 	    &_i->to.x, &_i->to.y
 	) == 4) {
 		_i->command = TURN_ON;
-		return NULL;
+		return 0;
 	}
 
 	if (sscanf(
@@ -61,7 +64,7 @@ instruction_parse(Instruction *_i, char _s[])
 	    &_i->to.x, &_i->to.y
 	) == 4) {
 		_i->command = TURN_OFF;
-		return NULL;
+		return 0;
 	}
 
 	if (sscanf(
@@ -70,10 +73,10 @@ instruction_parse(Instruction *_i, char _s[])
 	    &_i->to.x, &_i->to.y
 	) == 4) {
 		_i->command = TOGGLE;
-		return NULL;
+		return 0;
 	}
 
-	return "Invalid line";
+	return -1;
 }
 
 static void

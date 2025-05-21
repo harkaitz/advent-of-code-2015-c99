@@ -11,8 +11,8 @@ UNAME_S   ?=$(shell uname -s)
 EXE       ?=$(shell uname -s | awk '/Windows/ || /MSYS/ || /CYG/ { print ".exe" }')
 SOURCES    =$(shell find . -regex './[012][0-9].c')
 PROGS      =$(patsubst ./%.c,$(BUILDDIR)/%$(EXE),$(SOURCES))
-LIB_H      =aoc/input.h
-LIB_C      =aoc/input.c
+LIB_H      =$(shell find aoc -name '*.h')
+LIB_C      =$(shell find aoc -name '*.c')
 LIB_CRYPTO =-lcrypto
 
 all: $(PROGS)

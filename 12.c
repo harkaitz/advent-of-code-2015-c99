@@ -1,36 +1,34 @@
 #include "aoc/input.h"
 #include "aoc/json.h"
-#include <stdbool.h>
 
 char   buffer[50000];
 size_t buffersz;
 
-static long json_count_numbers(struct json_value_s *_json, bool _ignore_red);
+static long json_count_numbers(struct json_value_s *_json, int _ignore_red);
 
 int
 main(int _argc, char *_argv[])
 {
-	FILE        *fp;
-	err_t        err;
+	FILE                *fp;
 	struct json_value_s *json;
 	long                 res1, res2;
 	
-	err = aoc_input(&fp, "2015", 12, 1);
-	if (err/*err*/) { fprintf(stderr, "error: %s\n", err); return 1; }
+	fp = aoc_input("2015", 12, 1);
+	if (!fp/*err*/) { return 1; }
 	buffersz = fread(buffer, 1, sizeof(buffer)-1, fp);
 	fclose(fp);
 
 	json = json_parse(buffer, buffersz);
 	if (!json/*err*/) { fprintf(stderr, "error: Invalid JSON.\n"); return 1; }
-	res1 = json_count_numbers(json, false);
-	res2 = json_count_numbers(json, true);
+	res1 = json_count_numbers(json, 0);
+	res2 = json_count_numbers(json, 1);
 
 	printf("%li %li\n", res1, res2);
 	return 0;
 }
 
 static long
-json_count_numbers(struct json_value_s *_json, bool _ignore_red)
+json_count_numbers(struct json_value_s *_json, int _ignore_red)
 {
 	long count = 0;
 	json_number_t *number;

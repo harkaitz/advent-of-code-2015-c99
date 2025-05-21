@@ -6,7 +6,6 @@ int
 main(int _argc, char *_argv[])
 {
 	FILE *fp;
-	err_t err;
 	char  chr;
 	int   x1 = 9999, y1 = 9999;
 	int   x_santa = 9999, y_santa = 9999;
@@ -14,8 +13,8 @@ main(int _argc, char *_argv[])
 	int   houses_1 = 1;
 	int   houses_2 = 1;
 
-	err = aoc_input(&fp, "2015", 3, 1);
-	if (err/*err*/) { fprintf(stderr, "error: %s\n", err); return 1; }
+	fp = aoc_input("2015", 3, 1);
+	if (!fp/*err*/) { return 1; }
 
 	table[x1][y1] = 0x1|0x2;
 	for (int pos = 0; (chr = fgetc(fp)) != EOF; pos++) {
@@ -55,7 +54,7 @@ main(int _argc, char *_argv[])
 	}
 	fclose(fp);
 
-	printf("%i %i\n", houses_1, houses_2); // 2640
+	printf("%i %i\n", houses_1, houses_2);
 	return 0;
 }
      

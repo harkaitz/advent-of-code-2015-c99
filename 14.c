@@ -14,15 +14,14 @@ int
 main(int _argc, char *_argv[])
 {
 	FILE        *fp;
-	err_t        err;
 	int          result1 = 0, result2 = 0, d;
 	int          race_s = 2503;
 	reindeer_t   reindeers[20];
 	size_t       reindeersz = 0;
 
-	err = aoc_input(&fp, "2015", 14, 1);
-	if (err/*err*/) { fprintf(stderr, "error: %s\n", err); return 1; }
-	while (reindeer_read(reindeers+reindeersz, fp)) { reindeersz++; }
+	fp = aoc_input("2015", 14, 1);
+	if (!fp/*err*/) { return 1; }
+	while (reindeersz < 20 && reindeer_read(reindeers+reindeersz, fp)) { reindeersz++; }
 	fclose(fp);
 
 	for (size_t r = 0; r<reindeersz; r++) {

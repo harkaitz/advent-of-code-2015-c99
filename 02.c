@@ -7,20 +7,18 @@ int
 main(int _argc, char *_argv[])
 {
 	FILE *fp;
-	err_t err;
 	int   l,w,h,s,p;
 	long long paper = 0;
 	long long ribbon = 0;
 
-	err = aoc_input(&fp, "2015", 2, 1);
-	if (err/*err*/) { fprintf(stderr, "error: %s\n", err); return 1; }
+	fp = aoc_input("2015", 2, 1);
+	if (!fp/*err*/) { return 1; }
 
 	while (fscanf(fp, "%i" "x" "%i" "x" "%i" "\n", &l, &w, &h)==3) {
 		s = 2*l*w + 2*w*h + 2*h*l + min_side(l, w, h);
 		p = l*w*h + min_perimeter(l, w, h);
 		paper += s;
 		ribbon += p;
-		// fprintf(stderr, "%i %i\n", s, p);
 	}
 
 	fclose(fp);

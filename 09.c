@@ -22,16 +22,15 @@ int
 main(int _argc, char *_argv[])
 {
 	FILE        *fp;
-	err_t        err;
 	char         city1[60], city2[60];
 	int          distance;
 	int          best[2] = {INT_MAX,0};
         int          route[100];
 
-	err = aoc_input(&fp, "2015", 9, 1);
-	if (err/*err*/) { fprintf(stderr, "error: %s\n", err); return 1; }
+	fp = aoc_input("2015", 9, 1);
+	if (!fp/*err*/) { return 1; }
 
-	while (fscanf(fp, "%59s to %59s = %i\n", city1, city2, &distance)==3) {
+	while (roadsz < 100 && fscanf(fp, "%59s to %59s = %i\n", city1, city2, &distance)==3) {
 		roads[roadsz].l1 = usymbol_new(city1);
 		roads[roadsz].l2 = usymbol_new(city2);
 		roads[roadsz].d = distance;

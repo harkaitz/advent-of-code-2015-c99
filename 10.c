@@ -14,13 +14,13 @@ int
 main(int _argc, char *_argv[])
 {
 	FILE        *fp;
-	err_t        err; int e;
+	int          e;
 	int          games1 = 40;
 	int          games2 = 50;
 	size_t       result1 = 0, result2 = 0;
 
-	err = aoc_input(&fp, "2015", 10, 1);
-	if (err/*err*/) { fprintf(stderr, "error: %s\n", err); return 1; }
+	fp = aoc_input("2015", 10, 1);
+	if (!fp/*err*/) { return 1; }
 
 	e = !fgets(b1(0), bl()-1, fp);
 	if (e/*err*/) { fprintf(stderr, "error: Invalid data.\n"); return 1; }

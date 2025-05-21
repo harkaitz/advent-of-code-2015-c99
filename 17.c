@@ -1,25 +1,23 @@
 #include "aoc/input.h"
-#include <stdbool.h>
 #include <limits.h>
 
-static int combinations(bool _c[], size_t _csz, unsigned long *_i);
+static int combinations(int _c[], size_t _csz, unsigned long *_i);
 
 int
 main(int _argc, char *_argv[])
 {
 	FILE           *fp;
-	err_t           err;
 	int             containers[30];
 	size_t          containersz = 0;
-	bool            combination[30];
+	int             combination[30];
 	unsigned long   combination_pos = 0;
 	long            result1 = 0;
 	long            result2 = 0;
 	int             minimum = INT_MAX;
 	long            eggnog  = 150;
 
-	err = aoc_input(&fp, "2015", 17, 1);
-	if (err/*err*/) { fprintf(stderr, "error: %s\n", err); return 1; }
+	fp = aoc_input("2015", 17, 1);
+	if (!fp/*err*/) { return 1; }
 	while (containersz < 30 && fscanf(fp, "%i\n", containers+containersz)==1)
 		containersz++;
 	fclose(fp);
@@ -48,7 +46,7 @@ main(int _argc, char *_argv[])
 }
 
 static int
-combinations(bool _c[], size_t _csz, unsigned long *_i)
+combinations(int _c[], size_t _csz, unsigned long *_i)
 {
 	unsigned long v = *_i;
 	for (size_t i=0; i<_csz; i++, v = v >> 1) {

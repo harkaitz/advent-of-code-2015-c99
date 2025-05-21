@@ -1,20 +1,19 @@
 #include "aoc/input.h"
 
-static char const *string_size(size_t *_dl, size_t *_cl, char const _s[]);
-static size_t encoded_size(char const _s[], size_t _l);
+static char const *string_size  (size_t *_dl, size_t *_cl, char const _s[]);
+static size_t      encoded_size (char const _s[], size_t _l);
 
 int
 main(int _argc, char *_argv[])
 {
 	FILE        *fp;
-	err_t        err;
 	char         buffer[512];
 	size_t       datalen, codelen;
 	size_t       total_datalen = 0, total_codelen = 0, total_encoded = 0;
 	char const  *start;
 
-	err = aoc_input(&fp, "2015", 8, 1);
-	if (err/*err*/) { fprintf(stderr, "error: %s\n", err); return 1; }
+	fp = aoc_input("2015", 8, 1);
+	if (!fp/*err*/) { return 1; }
 
 	while (fgets(buffer, sizeof(buffer)-1, fp)) {
 		start = string_size(&datalen, &codelen, buffer);

@@ -4,14 +4,13 @@ int
 main(int _argc, char *_argv[])
 {
 	FILE *fp;
-	err_t err;
 	int   counter = 0;
 	int   position = 1;
 	int   first_minus_one = -1;
 	char  character;
 
-	err = aoc_input(&fp, "2015", 1, 1);
-	if (err/*err*/) { fprintf(stderr, "error: %s\n", err); return 1; }
+	fp = aoc_input("2015", 1, 1);
+	if (!fp/*err*/) { return 1; }
 
 	while ((character = fgetc(fp)) != EOF) {
 		switch (character) {

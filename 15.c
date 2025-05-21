@@ -8,22 +8,21 @@ struct ingredient_s {
 	long quantity;
 };
 
-static int  ingredient_read(ingredient_t *_i, FILE *_fp);
-static long recipe_score(ingredient_t _i[], size_t _isz);
-static long recipe_calories(ingredient_t _i[], size_t _isz);
+static int  ingredient_read (ingredient_t *_i, FILE *_fp);
+static long recipe_score    (ingredient_t _i[], size_t _isz);
+static long recipe_calories (ingredient_t _i[], size_t _isz);
 
 int
 main(int _argc, char *_argv[])
 {
 	FILE        *fp;
-	err_t        err;
 	long         a,b,c,d;
 	long         result1 = 0, result2 = 0, score;
 	ingredient_t ingredients[10];
 	size_t       ingredientsz = 0;
 
-	err = aoc_input(&fp, "2015", 15, 1);
-	if (err/*err*/) { fprintf(stderr, "error: %s\n", err); return 1; }
+	fp = aoc_input("2015", 15, 1);
+	if (!fp/*err*/) { return 1; }
 	while (ingredientsz < 10 && ingredient_read(ingredients+ingredientsz, fp)) { ingredientsz++; }
 	fclose(fp);
 

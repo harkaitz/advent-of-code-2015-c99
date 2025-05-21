@@ -1,9 +1,8 @@
 #include "aoc/input.h"
-#include <stdbool.h>
 
 static int         vowels(char _s[]);
 static char const *repeated(char const _s[]);
-static bool        banned(char _s[]);
+static int         banned(char _s[]);
 
 static char const *repeated2(char const _s[]);
 static char const *repeated3(char const _s[]);
@@ -12,12 +11,11 @@ int
 main(int _argc, char *_argv[])
 {
 	FILE *fp;
-	err_t err;
 	char  string[512] = {0};
 	int   count1 = 0, count2 = 0;
 
-	err = aoc_input(&fp, "2015", 5, 2);
-	if (err/*err*/) { fprintf(stderr, "error: %s\n", err); return 1; }
+	fp = aoc_input("2015", 5, 2);
+	if (!fp/*err*/) { return 1; }
 
 	while (fgets(string, sizeof(string)-1, fp)) {
 		if (vowels(string)>=3 && repeated(string) && !banned(string)) {
@@ -56,7 +54,7 @@ repeated(char const _s[])
 	return NULL;
 }
 
-static bool
+static int
 banned(char _s[])
 {
 	return (

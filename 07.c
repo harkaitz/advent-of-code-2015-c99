@@ -11,9 +11,8 @@ struct Wire {
 	int          v_set;
 };
 
-static err_t  wire_parse(char _s[]);
+static int    wire_parse(char _s[]);
 static Signal wire_get(char _n[]);
-
 
 static Wire   wires[400];
 static size_t wiresz = 0;
@@ -22,16 +21,19 @@ int
 main(int _argc, char *_argv[])
 {
 	FILE        *fp;
-	err_t        err;
 	char         buffer[512];
 	Signal       a;
 	size_t       i;
+	int          e;
 
-	err = aoc_input(&fp, "2015", 7, 1);
-	if (err/*err*/) { fprintf(stderr, "error: %s\n", err); return 1; }
-	while (fgets(buffer, sizeof(buffer)-1, fp)) {
-		err = wire_parse(buffer);
-		if (err/*err*/) { fprintf(stderr, "error: %s: %s", err, buffer); return 1; }
+	fp = aoc_input("2015", 7, 1);
+	if (!fp/*err*/) { return 1; }
+	for (int line=0; fgets(buffer, sizeof(buffer)-1, fp); line++) {
+		e = wire_parse(buffer);
+		if (e<0/*err*/) {
+			fprintf(stderr, "error: Line %i: Invalid format.\n", line);
+			return 1;
+		}
 	}
 	fclose(fp);
 
@@ -55,35 +57,35 @@ static Signal wire_lshift(Signal _a, Signal _b) { return (_a << _b)&0xffff; }
 static Signal wire_rshift(Signal _a, Signal _b) { return (_a >> _b)&0xffff; }
 static Signal wire_not   (Signal _a, Signal _b) { return (~_a)&0xffff; }
 
-static err_t
+static int
 wire_parse(char _s[])
 {
 	Wire *w = wires+(wiresz++);
 	memset(w, 0, sizeof(Wire));
 	if (sscanf(_s, "%s -> %s", w->a, w->name)==2) {
-		return NULL;
+		return 0;
 	}
 	if (sscanf(_s, "%s AND %s -> %s", w->a, w->b, w->name)==3) {
 		w->gate = wire_and;
-		return NULL;
+		return 0;
 	}
 	if (sscanf(_s, "%s OR %s -> %s", w->a, w->b, w->name)==3) {
 		w->gate = wire_or;
-		return NULL;
+		return 0;
 	}
 	if (sscanf(_s, "%s LSHIFT %s -> %s", w->a, w->b, w->name)==3) {
 		w->gate = wire_lshift;
-		return NULL;
+		return 0;
 	}
 	if (sscanf(_s, "%s RSHIFT %s -> %s", w->a, w->b, w->name)==3) {
 		w->gate = wire_rshift;
-		return NULL;
+		return 0;
 	}
 	if (sscanf(_s, "NOT %s -> %s", w->a, w->name)==2) {
 		w->gate = wire_not;
-		return NULL;
+		return 0;
 	}
-	return "Invalid line";
+	return -1;
 }
 
 static Signal

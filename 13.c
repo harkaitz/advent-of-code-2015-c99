@@ -16,40 +16,20 @@ struct friendship_s {
 friendship_t relations[100];
 size_t       relationsz = 0;
 
-int  table_happiness(int _t[], int r) {
-	int total = 0;
-	for (int i=0; i<=r; i++) {
-		int a = _t[i];
-		int b = (i==r)?_t[0]:_t[i+1];
-		for (int f = 0; f < relationsz; f++) {
-			if ((relations[f].person1 == a && relations[f].person2 == b) ||
-			    (relations[f].person1 == b && relations[f].person2 == a)) {
-				total += relations[f].friendship;
-			}
-		}
-	}
-	return total;
-}
-
-void table_search(int *_best, int _t[], int _r) {
-	int happiness = table_happiness(_t, _r);
-	if (happiness > *_best) {
-		*_best = happiness;
-	}
-}
+static int  table_happiness(int _t[], int r);
+static void table_search(int *_best, int _t[], int _r);
 
 int
 main(int _argc, char *_argv[])
 {
 	FILE        *fp;
-	err_t        err;
 	char         person1[60], person2[60], mode[30]; int happiness;
 	int          table[20];
 	size_t       tablesz;
 	int          best1 = 0, best2 = 0;
 
-	err = aoc_input(&fp, "2015", 13, 1);
-	if (err/*err*/) { fprintf(stderr, "error: %s\n", err); return 1; }
+	fp = aoc_input("2015", 13, 1);
+	if (!fp/*err*/) { return 1; }
 
 	while (fscanf(
 	    fp,
@@ -72,4 +52,30 @@ main(int _argc, char *_argv[])
 
 	printf("%i %i\n", best1, best2);
 	return 0;
+}
+
+static int
+table_happiness(int _t[], int r)
+{
+	int total = 0;
+	for (int i=0; i<=r; i++) {
+		int a = _t[i];
+		int b = (i==r)?_t[0]:_t[i+1];
+		for (int f = 0; f < relationsz; f++) {
+			if ((relations[f].person1 == a && relations[f].person2 == b) ||
+			    (relations[f].person1 == b && relations[f].person2 == a)) {
+				total += relations[f].friendship;
+			}
+		}
+	}
+	return total;
+}
+
+static void
+table_search(int *_best, int _t[], int _r)
+{
+	int happiness = table_happiness(_t, _r);
+	if (happiness > *_best) {
+		*_best = happiness;
+	}
 }
