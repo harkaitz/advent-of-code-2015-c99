@@ -11,7 +11,7 @@ main(int _argc, char *_argv[])
 	unsigned char digest[MD5_DIGEST_LENGTH];
 	MD5_CTX ctx;
 
-	fp = aoc_input("2015", 4, 1);
+	fp = aoc_input(_argv[1], "2015", 4, 1);
 	if (!fp/*err*/) { return 1; }
 	e = !fgets(buffer, sizeof(buffer)-1, fp);
 	fclose(fp);

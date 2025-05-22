@@ -12,7 +12,7 @@ main(int _argc, char *_argv[])
 	size_t       total_datalen = 0, total_codelen = 0, total_encoded = 0;
 	char const  *start;
 
-	fp = aoc_input("2015", 8, 1);
+	fp = aoc_input(_argv[1], "2015", 8, 1);
 	if (!fp/*err*/) { return 1; }
 
 	while (fgets(buffer, sizeof(buffer)-1, fp)) {

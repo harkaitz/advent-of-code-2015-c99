@@ -28,7 +28,7 @@ main(int _argc, char *_argv[])
 	size_t       tablesz;
 	int          best1 = 0, best2 = 0;
 
-	fp = aoc_input("2015", 13, 1);
+	fp = aoc_input(_argv[1], "2015", 13, 1);
 	if (!fp/*err*/) { return 1; }
 
 	while (fscanf(

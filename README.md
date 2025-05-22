@@ -43,4 +43,4 @@ I tested these solutions with the following compilers:
 - [Clang](https://clang.llvm.org/).
 - [Zig](https://ziglang.org/).
 
-Timings here: [./res](./res)
+Timings here: [./results](./results)

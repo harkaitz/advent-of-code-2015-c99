@@ -14,7 +14,7 @@ main(int _argc, char *_argv[])
 	char  string[512] = {0};
 	int   count1 = 0, count2 = 0;
 
-	fp = aoc_input("2015", 5, 2);
+	fp = aoc_input(_argv[1], "2015", 5, 2);
 	if (!fp/*err*/) { return 1; }
 
 	while (fgets(string, sizeof(string)-1, fp)) {

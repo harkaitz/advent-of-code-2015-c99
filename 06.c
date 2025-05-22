@@ -27,7 +27,7 @@ main(int _argc, char *_argv[])
 	Instruction  instruction;
 	int          e;
 
-	fp = aoc_input("2015", 6, 1);
+	fp = aoc_input(_argv[1], "2015", 6, 1);
 	if (!fp/*err*/) { return 1; }
 
 	for (int line=1; fgets(buffer, sizeof(buffer)-1, fp); line++) {

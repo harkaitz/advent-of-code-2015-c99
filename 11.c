@@ -10,7 +10,7 @@ main(int _argc, char *_argv[])
 	int          e;
 	char         password[256], *end;
 
-	fp = aoc_input("2015", 11, 1);
+	fp = aoc_input(_argv[1], "2015", 11, 1);
 	if (!fp/*err*/) { return 1; }
 
 	e = !fgets(password, sizeof(password)-1, fp); fclose(fp);

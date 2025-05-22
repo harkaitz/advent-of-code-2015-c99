@@ -11,7 +11,7 @@ main(int _argc, char *_argv[])
 	long long paper = 0;
 	long long ribbon = 0;
 
-	fp = aoc_input("2015", 2, 1);
+	fp = aoc_input(_argv[1], "2015", 2, 1);
 	if (!fp/*err*/) { return 1; }
 
 	while (fscanf(fp, "%i" "x" "%i" "x" "%i" "\n", &l, &w, &h)==3) {

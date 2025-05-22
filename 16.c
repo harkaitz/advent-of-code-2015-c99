@@ -39,7 +39,7 @@ main(int _argc, char *_argv[])
 	MFCSAM       tape_db;
 	int          result1 = -1, result2 = -1;
 
-	fp = aoc_input("2015", 16, 1);
+	fp = aoc_input(_argv[1], "2015", 16, 1);
 	if (!fp/*err*/) { return 1; }
 
 	while ((result1 == -1 || result2 == -1) && MFCSAM_read(&tape_db, fp))

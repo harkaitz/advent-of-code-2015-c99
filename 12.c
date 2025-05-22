@@ -13,7 +13,7 @@ main(int _argc, char *_argv[])
 	struct json_value_s *json;
 	long                 res1, res2;
 	
-	fp = aoc_input("2015", 12, 1);
+	fp = aoc_input(_argv[1], "2015", 12, 1);
 	if (!fp/*err*/) { return 1; }
 	buffersz = fread(buffer, 1, sizeof(buffer)-1, fp);
 	fclose(fp);

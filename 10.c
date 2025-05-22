@@ -19,7 +19,7 @@ main(int _argc, char *_argv[])
 	int          games2 = 50;
 	size_t       result1 = 0, result2 = 0;
 
-	fp = aoc_input("2015", 10, 1);
+	fp = aoc_input(_argv[1], "2015", 10, 1);
 	if (!fp/*err*/) { return 1; }
 
 	e = !fgets(b1(0), bl()-1, fp);

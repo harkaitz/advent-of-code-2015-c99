@@ -16,7 +16,7 @@ main(int _argc, char *_argv[])
 	int             minimum = INT_MAX;
 	long            eggnog  = 150;
 
-	fp = aoc_input("2015", 17, 1);
+	fp = aoc_input(_argv[1], "2015", 17, 1);
 	if (!fp/*err*/) { return 1; }
 	while (containersz < 30 && fscanf(fp, "%i\n", containers+containersz)==1)
 		containersz++;

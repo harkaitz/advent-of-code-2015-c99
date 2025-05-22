@@ -21,7 +21,7 @@ main(int _argc, char *_argv[])
 	ingredient_t ingredients[10];
 	size_t       ingredientsz = 0;
 
-	fp = aoc_input("2015", 15, 1);
+	fp = aoc_input(_argv[1], "2015", 15, 1);
 	if (!fp/*err*/) { return 1; }
 	while (ingredientsz < 10 && ingredient_read(ingredients+ingredientsz, fp)) { ingredientsz++; }
 	fclose(fp);

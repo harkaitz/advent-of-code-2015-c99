@@ -27,7 +27,7 @@ main(int _argc, char *_argv[])
 	int          best[2] = {INT_MAX,0};
         int          route[100];
 
-	fp = aoc_input("2015", 9, 1);
+	fp = aoc_input(_argv[1], "2015", 9, 1);
 	if (!fp/*err*/) { return 1; }
 
 	while (roadsz < 100 && fscanf(fp, "%59s to %59s = %i\n", city1, city2, &distance)==3) {

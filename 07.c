@@ -26,7 +26,7 @@ main(int _argc, char *_argv[])
 	size_t       i;
 	int          e;
 
-	fp = aoc_input("2015", 7, 1);
+	fp = aoc_input(_argv[1], "2015", 7, 1);
 	if (!fp/*err*/) { return 1; }
 	for (int line=0; fgets(buffer, sizeof(buffer)-1, fp); line++) {
 		e = wire_parse(buffer);
@@ -96,7 +96,7 @@ wire_get(char _n[])
 	Wire  *w;
 	if (!_n[0])
 		return 0;
-	if (sscanf(_n, "%hd", &v)==1)
+	if (sscanf(_n, "%hu", &v)==1)
 		return v;
 	for (i=0; i<wiresz; i++) {
 		w = wires + i;

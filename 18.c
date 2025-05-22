@@ -1,6 +1,38 @@
 #include "aoc/input.h"
 #include "aoc/utable.h"
 
+static int  utable_neighbours(utable_t *_t, size_t _x, size_t _y);
+static void utable_step(utable_t *_t, int _borders);
+static long utable_count(utable_t *_t);
+
+int
+main(int _argc, char *_argv[])
+{
+	FILE          *fp;
+	utable_t      *table1,*table2,*origin;
+	long           result1, result2;
+
+	fp = aoc_input(_argv[1], "2015", 18, 1);
+	if (!fp/*err*/) { return 1; }
+	origin = utable_read(101*101, fp);
+	if (!origin/*err*/) { return 1; }
+	fclose(fp);
+
+	table1 = utable_copy(origin);
+	table2 = utable_copy(origin);
+	if (!table1 || !table2/*err*/) { return 1; }
+	for (int i=0; i<100; i++) {
+		utable_step(table1, 0);
+		utable_step(table2, 1);
+	}
+	result1 = utable_count(table1);
+	result2 = utable_count(table2);
+
+	printf("%li %li\n", result1, result2);
+
+	return 0;
+}
+
 static int
 utable_neighbours(utable_t *_t, size_t _x, size_t _y)
 {
@@ -53,32 +85,4 @@ utable_count(utable_t *_t)
 		}
 	}
 	return count;
-}
-
-int
-main(int _argc, char *_argv[])
-{
-	FILE          *fp;
-	utable_t      *table1,*table2,*origin;
-	long           result1, result2;
-
-	fp = aoc_input("2015", 18, 1);
-	if (!fp/*err*/) { return 1; }
-	origin = utable_read(101*101, fp);
-	if (!origin/*err*/) { return 1; }
-	fclose(fp);
-
-	table1 = utable_copy(origin);
-	table2 = utable_copy(origin);
-	if (!table1 || !table2/*err*/) { return 1; }
-	for (int i=0; i<100; i++) {
-		utable_step(table1, 0);
-		utable_step(table2, 1);
-	}
-	result1 = utable_count(table1);
-	result2 = utable_count(table2);
-
-	printf("%li %li\n", result1, result2);
-
-	return 0;
 }

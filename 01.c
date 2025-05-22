@@ -9,7 +9,7 @@ main(int _argc, char *_argv[])
 	int   first_minus_one = -1;
 	char  character;
 
-	fp = aoc_input("2015", 1, 1);
+	fp = aoc_input(_argv[1], "2015", 1, 1);
 	if (!fp/*err*/) { return 1; }
 
 	while ((character = fgetc(fp)) != EOF) {

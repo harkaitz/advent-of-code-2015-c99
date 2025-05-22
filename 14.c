@@ -19,7 +19,7 @@ main(int _argc, char *_argv[])
 	reindeer_t   reindeers[20];
 	size_t       reindeersz = 0;
 
-	fp = aoc_input("2015", 14, 1);
+	fp = aoc_input(_argv[1], "2015", 14, 1);
 	if (!fp/*err*/) { return 1; }
 	while (reindeersz < 20 && reindeer_read(reindeers+reindeersz, fp)) { reindeersz++; }
 	fclose(fp);

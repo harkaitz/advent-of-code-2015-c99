@@ -15,7 +15,7 @@ main(int _argc, char *_argv[])
 
 	memset(table, 0, sizeof(table));
         
-	fp = aoc_input("2015", 3, 1);
+	fp = aoc_input(_argv[1], "2015", 3, 1);
 	if (!fp/*err*/) { return 1; }
 
 	table[x1][y1] = 0x1|0x2;
