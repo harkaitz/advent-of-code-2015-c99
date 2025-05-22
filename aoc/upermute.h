@@ -2,7 +2,7 @@
  * @file upermute.h
  * @brief Generic permutation function.
  *
- * @date 2020/05/19
+ * @date 2025/05/19
  * @bug No known bugs.
  */
 #ifndef UPERMUTE_H

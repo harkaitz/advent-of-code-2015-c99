@@ -23,8 +23,8 @@ Full List:
 - Day 15: Science for Hungry People: [15.c](./15.c), [enunciation](https://adventofcode.com/2015/day/15)
 - Day 16: Aunt Sue: [16.c](./16.c), [enunciation](https://adventofcode.com/2015/day/16)
 - Day 17: No Such Thing as Too Much: [17.c](./17.c), [enunciation](https://adventofcode.com/2015/day/17)
-<!---
 - Day 18: Like a GIF For Your Yard: [18.c](./18.c), [enunciation](https://adventofcode.com/2015/day/18)
+<!---
 - Day 19: Medicine for Rudolph: [19.c](./19.c), [enunciation](https://adventofcode.com/2015/day/19)
 - Day 20: Infinite Elves and Infinite Houses: [20.c](./20.c), [enunciation](https://adventofcode.com/2015/day/20)
 - Day 21: RPG Simulator 20XX: [21.c](./21.c), [enunciation](https://adventofcode.com/2015/day/21)
@@ -34,3 +34,13 @@ Full List:
 - Day 25: Let It Snow: [25.c](./25.c), [enunciation](https://adventofcode.com/2015/day/25)
 --->
 
+I tested these solutions with the following compilers: 
+
+- [gcc](https://gcc.gnu.org/).
+- [tcc](https://bellard.org/tcc/).
+- [cproc](https://sr.ht/~mcf/cproc/).
+- [chibicc](https://github.com/rui314/chibicc).
+- [Clang](https://clang.llvm.org/).
+- [Zig](https://ziglang.org/).
+
+Timings here: [./res](./res)

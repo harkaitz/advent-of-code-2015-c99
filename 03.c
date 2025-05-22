@@ -1,6 +1,6 @@
 #include "aoc/input.h"
 
-char table[2*10000][2*10000] = {0};
+char table[2*10000][2*10000];
 
 int
 main(int _argc, char *_argv[])
@@ -13,6 +13,8 @@ main(int _argc, char *_argv[])
 	int   houses_1 = 1;
 	int   houses_2 = 1;
 
+	memset(table, 0, sizeof(table));
+        
 	fp = aoc_input("2015", 3, 1);
 	if (!fp/*err*/) { return 1; }
 

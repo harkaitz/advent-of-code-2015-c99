@@ -1,7 +1,6 @@
 #ifndef AOC_INPUT_H
 #define AOC_INPUT_H
 
-#include <unistd.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

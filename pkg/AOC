@@ -1,17 +1,32 @@
 #!/bin/sh -e
 AOC_YEAR=2015
-AOC_DAYS=01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17
-AOC_VARIANTS=gcc,tcc,cproc,clang
+AOC_VARIANTS=gcc,tcc,cproc,chibicc,clang,zig
 AOC_VARIANT=gcc
 AOC_BUILD=aoc_build
+aoc_days() {
+    local day
+    for day in 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17
+    do
+        if test @"${AOC_VARIANT}" = @"zig" && test @"${day}" = @"04"; then
+            continue
+        fi
+        echo "${day}"
+    done
+}
 aoc_build() {
     case "${AOC_VARIANT}" in
-        gcc)   make CC="gcc"   CFLAGS="-O3 -std=c99" clean all;;
-        tcc)   make CC="tcc"   CFLAGS=""             clean all;;
-        cproc) make CC="cproc" CFLAGS=""             clean all;;
-        clang) make CC="clang" CFLAGS="-O3 -std=c99" clean all;;
+        gcc)         make CC="gcc"                    CFLAGS="-O3 -std=c99"   SUFFIX=''         clean all;;
+        tcc)         make CC="tcc"                    CFLAGS=""               SUFFIX='.tcc'     clean all;;
+        cproc)       make CC="/opt/cproc/bin/cproc"   CFLAGS=""               SUFFIX='.cproc'   clean all;;
+        chibicc|8cc) make CC="chibicc"                CFLAGS=""               SUFFIX='.chibicc' clean all;;
+        clang)       make CC="clang"                  CFLAGS="-O3 -std=c99"   SUFFIX='.clang'   clean all;;
+        zig)         make CC="zig cc" SED_CMD='/04/d' CFLAGS=""               SUFFIX='.zig'     clean all;;
     esac
 }
 aoc_run() {
-    ${AOC_RUNNER:-env} "${BUILDDIR:-./.build}/${1}"
+    case "${AOC_VARIANT}" in
+        gcc) local suff='';;
+        *)   local suff=".${AOC_VARIANT}";;
+    esac
+    ${AOC_RUNNER:-env} "${BUILDDIR:-./.build}/${1}${suff}"
 }

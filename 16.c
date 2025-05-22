@@ -1,13 +1,14 @@
 #include "aoc/input.h"
 #include <limits.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct MFCSAM MFCSAM;
 
 struct MFCSAM {
 	int  number;
 	long val[10];
-	int  val_p[10];
+	bool val_p[10];
 };
 
 static char const *MFCSAM_properties[] = {
@@ -21,9 +22,15 @@ static char MFCSAM_property_type[] = {
 	'=', '='
 };
 
+static MFCSAM tape_card = {
+	-1,
+	{ 3, 7, 2, 3, 0, 0, 5, 3, 2, 1 },
+	{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
+};
+
 static int  MFCSAM_read(MFCSAM *_a, FILE *_fp);
-static int  MFCSAM_equal_1(MFCSAM const *_a, MFCSAM const *_b);
-static int  MFCSAM_equal_2(MFCSAM const *_a, MFCSAM const *_b);
+static int  MFCSAM_equal_1(MFCSAM *_a, MFCSAM *_b);
+static int  MFCSAM_equal_2(MFCSAM *_a, MFCSAM *_b);
 
 int
 main(int _argc, char *_argv[])
@@ -32,15 +39,9 @@ main(int _argc, char *_argv[])
 	MFCSAM       tape_db;
 	int          result1 = -1, result2 = -1;
 
-	MFCSAM tape_card = {
-		-1,
-		{ 3, 7, 2, 3, 0, 0, 5, 3, 2, 1 },
-		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
-	};
-
 	fp = aoc_input("2015", 16, 1);
 	if (!fp/*err*/) { return 1; }
-	
+
 	while ((result1 == -1 || result2 == -1) && MFCSAM_read(&tape_db, fp))
 	{
 		if (result1 == -1 && MFCSAM_equal_1(&tape_card, &tape_db))
@@ -57,7 +58,7 @@ main(int _argc, char *_argv[])
 static int
 MFCSAM_property(char const _p[])
 {
-	for (int i=0; MFCSAM_properties[i]; i++) {
+	for (int i=0; i<10; i++) {
 		if (!strcmp(_p, MFCSAM_properties[i])) {
 			return i;
 		}
@@ -85,13 +86,12 @@ MFCSAM_read(MFCSAM *_a, FILE *_fp)
 			_a->val_p[v] = 1;
 		}
 	}
-
 	return 1;
 }
 static int
-MFCSAM_equal_1(MFCSAM const *_a, MFCSAM const *_b)
+MFCSAM_equal_1(MFCSAM *_a, MFCSAM *_b)
 {
-	for (int i=0; MFCSAM_properties[i]; i++) {
+	for (int i=0; i<10; i++) {
 		if (_a->val_p[i] && _b->val_p[i] && (_a->val[i]!=_b->val[i])) {
 			return 0;
 		}
@@ -100,9 +100,9 @@ MFCSAM_equal_1(MFCSAM const *_a, MFCSAM const *_b)
 }
 
 static int
-MFCSAM_equal_2(MFCSAM const *_a, MFCSAM const *_b)
+MFCSAM_equal_2(MFCSAM *_a, MFCSAM *_b)
 {
-	for (int i=0; MFCSAM_properties[i]; i++) {
+	for (int i=0; i<10; i++) {
 		if (_b->val_p[i] && _a->val_p[i])
 		switch (MFCSAM_property_type[i]) {
 		case '=': if (_b->val[i] != _a->val[i]) { return 0; } break;
