@@ -26,8 +26,8 @@ Full List:
 - Day 18: Like a GIF For Your Yard: [18.c](./18.c), [enunciation](https://adventofcode.com/2015/day/18)
 - Day 19: Medicine for Rudolph: [19.c](./19.c), [enunciation](https://adventofcode.com/2015/day/19)
 - Day 20: Infinite Elves and Infinite Houses: [20.c](./20.c), [enunciation](https://adventofcode.com/2015/day/20)
-<!---
 - Day 21: RPG Simulator 20XX: [21.c](./21.c), [enunciation](https://adventofcode.com/2015/day/21)
+<!---
 - Day 22: Wizard Simulator 20XX: [22.c](./22.c), [enunciation](https://adventofcode.com/2015/day/22)
 - Day 23: Opening the Turing Lock: [23.c](./23.c), [enunciation](https://adventofcode.com/2015/day/23)
 - Day 24: It Hangs in the Balance: [24.c](./24.c), [enunciation](https://adventofcode.com/2015/day/24)
