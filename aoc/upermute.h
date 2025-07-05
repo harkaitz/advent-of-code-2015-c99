@@ -21,7 +21,8 @@ typedef UPERMUTE_TYPE        upermute_t;
 typedef UPERMUTE_UDATA_TYPE  upermute_udata_t;
 
 static inline void
-swap(upermute_t *x, upermute_t *y) {
+swap(upermute_t *x, upermute_t *y)
+{
 	upermute_t t[1];
 	memcpy(t, y, sizeof(upermute_t));
 	memcpy(y, x, sizeof(upermute_t));
